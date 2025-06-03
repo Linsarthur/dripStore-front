@@ -1,8 +1,12 @@
+import Navbar from "../components/Navbar";
+import Tables from "../components/Tables";
+
 const Dashboard = () => {
   return (
-    <>
-      <h1>Dashboard</h1>
-    </>
+    <div className="bg-gray-500/10">
+      <Navbar />
+      <Tables />
+    </div>
   );
 };
 

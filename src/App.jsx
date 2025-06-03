@@ -1,18 +1,16 @@
-import AntPorvider from "./contexts/AntContext"
-import Paths from "./routes/Paths"
-
-
+import AntPorvider from "./contexts/AntContext";
+import Paths from "./routes/Paths";
 
 function App() {
-
-
   return (
     <>
-      <AntPorvider>
-        <Paths />
-      </AntPorvider>
+      <div className="bg-gray-500/10">
+        <AntPorvider>
+          <Paths />
+        </AntPorvider>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
