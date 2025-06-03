@@ -1,13 +1,16 @@
+import AntPorvider from "./contexts/AntContext"
 import Paths from "./routes/Paths"
 
 
 
 function App() {
-  
+
 
   return (
     <>
-      <Paths/>
+      <AntPorvider>
+        <Paths />
+      </AntPorvider>
     </>
   )
 }
