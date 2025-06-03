@@ -1,4 +1,5 @@
-import Home from "./components/Home"
+import Paths from "./routes/Paths"
+
 
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <>
-      <Home/>
+      <Paths/>
     </>
   )
 }

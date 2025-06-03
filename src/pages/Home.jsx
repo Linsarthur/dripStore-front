@@ -45,12 +45,12 @@ const Home = () => {
           <img
             src={tenisFrente}
             alt="tenis de frente"
-            className="w-[50%] h-[50%]"
+            className="w-[45%] h-[45%]"
           />
           <img
             src={tenisCosta}
             alt="tenis de costas"
-            className="w-[50%] h-[50%] mt-[100px]"
+            className="w-[45%] h-[45%] mt-[50px]"
           />
         </div>
       </div>
