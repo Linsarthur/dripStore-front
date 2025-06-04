@@ -36,17 +36,18 @@ const Tables = () => {
   ];
 
   const colunas = (
-    <Select defaultValue="usuario_nome" style={{ width: 100 }}>
-      <option value="usuario_nome">Nome</option>
-      <option value="usuario_email">Email</option>
-      <option value="usuario_telefone">Telefone</option>
-      <option value="usuario_cpf">Cpf</option>
+    <Select defaultValue="usuario_nome" className="w-[100px]">
+      <Select.Option value="usuario_nome">Nome</Select.Option>
+      <Select.Option value="usuario_email">Email</Select.Option>
+      <Select.Option value="usuario_telefone">Telefone</Select.Option>
+      <Select.Option value="usuario_cpf">Cpf</Select.Option>
     </Select>
   );
 
   return (
     <>
-      <div className="p-[10px] h-screen">
+      
+      <div className="p-[10px] flex-1">
         <div className="flex justify-between mb-[10px]">
           <div className="w-[25%] flex ">
             <Input addonAfter={colunas} defaultValue="Teste" />
@@ -61,7 +62,7 @@ const Tables = () => {
             </Button>
           </div>
         </div>
-        <Table dataSource={data} columns={columns} className=""/>
+        <Table dataSource={data} columns={columns} className="flex-1"/>
       </div>
     </>
   );
