@@ -1,11 +1,12 @@
-import Navbar from "../components/Navbar";
-import Tables from "../components/Tables";
+import Produtos from "./Produtos";
+import Usuarios from "./Usuarios";
 
 const Dashboard = () => {
   return (
     <div className="bg-gray-500/10">
-      <Navbar />
-      <Tables />
+      
+      <Produtos />
+      <Usuarios />
     </div>
   );
 };

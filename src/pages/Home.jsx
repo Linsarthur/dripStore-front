@@ -4,7 +4,6 @@ import tenisCosta from "../assets/tenis-costa.png";
 import tenisFrente from "../assets/tenis-frente.png";
 
 const Home = () => {
-
   function onLogin(data) {
     console.log(data);
   }
@@ -17,10 +16,7 @@ const Home = () => {
             <img src={logo} alt="" className="block w-[33px] h-[33px]" />
             <h1 className="mb-[20px]">Bem vindo(a)</h1>
           </div>
-          <Form
-            layout="vertical"
-            onFinish={onLogin}
-          >
+          <Form layout="vertical" onFinish={onLogin}>
             <Form.Item
               label="Email"
               name="usuario_email"
@@ -35,11 +31,7 @@ const Home = () => {
             >
               <Input.Password placeholder="********" />
             </Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="w-full my-6"
-            >
+            <Button type="primary" htmlType="submit" className="w-full my-6">
               Entrar
             </Button>
           </Form>

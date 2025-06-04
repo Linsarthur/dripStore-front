@@ -19,9 +19,13 @@ const Navbar = () => {
                 Sair
               </a>
             </div>
-            <p className="pt-[3px] w-[30px] h-[30px] bg-[#c92871] text-white rounded-2xl text-center">
+            <Button
+              type="primary"
+              className="w-[30px]"
+              shape="circle"
+            >
               U
-            </p>
+            </Button>
           </div>
         </div>
       </div>

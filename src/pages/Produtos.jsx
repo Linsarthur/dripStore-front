@@ -1,7 +1,9 @@
+import Tables from "../components/Tables";
+
 const Produtos = () => {
   return (
     <>
-      <h1>Página de produtos</h1>
+      <Tables />
     </>
   );
 };
