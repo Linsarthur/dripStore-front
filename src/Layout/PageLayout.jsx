@@ -4,8 +4,10 @@ import Navbar from "../components/Navbar";
 const PageLayout = () => {
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <div className="">
+        <Navbar />
+        <Outlet />
+      </div>
     </>
   );
 };

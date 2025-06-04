@@ -1,11 +1,8 @@
-import Produtos from "./Produtos";
-import Usuarios from "./Usuarios";
-
+import Tables from "../components/Tables";
 const Dashboard = () => {
   return (
-    <div className="bg-gray-500/10">
-      <Produtos />
-      <Usuarios />
+    <div className="">
+      <Tables />
     </div>
   );
 };

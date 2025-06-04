@@ -61,7 +61,7 @@ const Tables = () => {
             </Button>
           </div>
         </div>
-        <Table dataSource={data} columns={columns} />
+        <Table dataSource={data} columns={columns} className=""/>
       </div>
     </>
   );
