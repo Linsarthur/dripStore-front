@@ -4,8 +4,11 @@ import { Button, Form, Input } from "antd";
 const FormUser = ({ isOpen, isClosed }) => {
   return (
     <div
+      onClick={isClosed}
       className={`fixed inset-0 bg-black/50 z-40 flex justify-end transition-opacity duration-500 ${
-        isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        isOpen
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
       }`}
     >
       <div
