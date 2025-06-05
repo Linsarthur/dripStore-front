@@ -1,9 +1,11 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import { useState } from "react";
+import { useContext } from "react";
+import { AntContext } from "../contexts/AntContext";
 
 const Navbar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+
+  const { collapsed, setCollapsed } = useContext(AntContext);
 
   const handleClick = () => {
     setCollapsed(!collapsed);
@@ -15,10 +17,14 @@ const Navbar = () => {
         <div className="flex-1 rounded">
           <div className="flex justify-between items-center rounded px-[50px] py-[10px] bg-white shadow-md">
             <div className="flex items-center gap-5">
-              <Button type="primary" onClick={handleClick}>
+              <Button
+                type="primary"
+                className="lg:!hidden"
+                onClick={handleClick}
+              >
                 {collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
               </Button>
-              <h2>Usuários</h2>
+              <h2 className="font-bold text-xl">Usuários</h2>
             </div>
             <div className="flex gap-5 items-center text-right">
               <div>

@@ -5,7 +5,7 @@ import {
   PlusOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { Button, Input, Select, Table } from "antd";
+import { Button, Input, Select, Space, Table } from "antd";
 import { useState } from "react";
 import FormUser from "./FormUser";
 
@@ -72,14 +72,16 @@ const Tables = () => {
 
   return (
     <>
-      
+
       <div className="p-[10px] flex-1">
         <div className="flex justify-between mb-[10px]">
           <div className="w-[25%] flex ">
-            <Input addonAfter={colunas} defaultValue="Teste" />
-            <Button type="primary">
-              <SearchOutlined />
-            </Button>
+            <Space.Compact>
+              <Input addonAfter={colunas} defaultValue="Teste" />
+              <Button type="primary">
+                <SearchOutlined />
+              </Button>
+            </Space.Compact>
           </div>
           <div className="text-center leading-[34px]">
             <Button type="primary" onClick={() => setOpenModal(true)}>
@@ -90,7 +92,7 @@ const Tables = () => {
         </div>
         <Table dataSource={data} columns={columns} className="" />
       </div>
-      <FormUser isOpen={openModal} isClosed={()=> {setOpenModal(!openModal)}} />
+      <FormUser isOpen={openModal} isClosed={() => { setOpenModal(!openModal) }} />
     </>
   );
 };

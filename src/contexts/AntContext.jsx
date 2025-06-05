@@ -1,16 +1,19 @@
 import { ConfigProvider, notification } from "antd";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const AntContext = createContext();
 
 const AntPorvider = ({ children }) => {
 
-    const [api, currentContext] = notification.useNotification({
+
+    const [collapsed, setCollapsed] = useState(false);
+
+    const [api, contextHolder] = notification.useNotification({
         placement: "bottomRight"
     })
 
     return (
-        <AntContext.Provider value={{ api }}>
+        <AntContext.Provider value={{ api, collapsed, setCollapsed }}>
             <ConfigProvider
                 theme={{
                     token: {
@@ -18,7 +21,7 @@ const AntPorvider = ({ children }) => {
                     }
                 }}
             >
-                {currentContext}
+                {contextHolder}
                 {children}
             </ConfigProvider>
         </AntContext.Provider>

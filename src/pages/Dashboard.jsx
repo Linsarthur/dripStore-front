@@ -4,7 +4,6 @@ import Tables from "../components/Tables";
 const Dashboard = () => {
   return (
     <div className="">
-      <NavbarSide />
       <Tables />
     </div>
   );
