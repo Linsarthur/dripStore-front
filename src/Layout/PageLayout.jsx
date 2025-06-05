@@ -4,9 +4,9 @@ import Navbar from "../components/Navbar";
 const PageLayout = () => {
   return (
     <>
-      <div className="">
+      <div className="relative h-screen">
         <Navbar />
-        <Outlet />
+       <Outlet/>
       </div>
     </>
   );

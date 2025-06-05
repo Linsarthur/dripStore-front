@@ -6,9 +6,7 @@ function App() {
     <>
       <div className="bg-gray-500/10">
         <AntPorvider>
-      
-            <Paths />
-       
+          <Paths />
         </AntPorvider>
       </div>
     </>

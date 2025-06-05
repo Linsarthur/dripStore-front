@@ -1,4 +1,5 @@
 import { Button, Form, Input } from "antd";
+import { useNavigate } from "react-router";
 import logo from "../assets/Group.png";
 import tenisCosta from "../assets/tenis-costa.png";
 import tenisFrente from "../assets/tenis-frente.png";
@@ -7,6 +8,8 @@ const Home = () => {
   function onLogin(data) {
     console.log(data);
   }
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -31,7 +34,12 @@ const Home = () => {
             >
               <Input.Password placeholder="********" />
             </Form.Item>
-            <Button type="primary" htmlType="submit" className="w-full my-6">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="w-full my-6"
+              onSubmit={navigate("/dashboard")}
+            >
               Entrar
             </Button>
           </Form>

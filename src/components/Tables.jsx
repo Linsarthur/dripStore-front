@@ -1,7 +1,17 @@
-import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  EyeOutlined,
+  PlusOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 import { Button, Input, Select, Table } from "antd";
+import { useState } from "react";
+import FormUser from "./FormUser";
 
 const Tables = () => {
+  const [openModal, setOpenModal] = useState(false);
+
   const data = [
     {
       key: "1",
@@ -9,6 +19,17 @@ const Tables = () => {
       email: "Arthur@teste.com",
       telefone: "88988888888",
       cpf: "000.000.000-00",
+      acoes: [
+        <Button type="primary" shape="circle" className="mr-2">
+          <EyeOutlined />
+        </Button>,
+        <Button type="primary" shape="circle" className="mr-2">
+          <EditOutlined />
+        </Button>,
+        <Button type="primary" shape="circle" className="mr-2">
+          <DeleteOutlined />
+        </Button>,
+      ],
     },
   ];
 
@@ -33,6 +54,11 @@ const Tables = () => {
       dataIndex: "cpf",
       key: "cpf",
     },
+    {
+      title: "Ações",
+      dataIndex: "acoes",
+      key: "acoes",
+    },
   ];
 
   const colunas = (
@@ -56,14 +82,15 @@ const Tables = () => {
             </Button>
           </div>
           <div className="text-center leading-[34px]">
-            <Button type="primary">
+            <Button type="primary" onClick={() => setOpenModal(true)}>
               <PlusOutlined />
               Novo usuário
             </Button>
           </div>
         </div>
-        <Table dataSource={data} columns={columns} className="flex-1"/>
+        <Table dataSource={data} columns={columns} className="" />
       </div>
+      <FormUser isOpen={openModal} isClosed={()=> {setOpenModal(!openModal)}} />
     </>
   );
 };
