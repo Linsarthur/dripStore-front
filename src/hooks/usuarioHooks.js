@@ -3,9 +3,9 @@ import { AXIOS, queryClient } from "../services";
 
 export const useBuscar = () => {
     return useQuery({
-        queryKey: ["produtos"],
+        queryKey: ["usuarios"],
         queryFn: async () => {
-            const request = await AXIOS.get("/produtos");
+            const request = await AXIOS.get("/usuarios");
             return request.data;
         }
     })
@@ -14,12 +14,12 @@ export const useBuscar = () => {
 export const useCriar = () => {
     return useMutation({
         mutationFn: async (dados) => {
-            const request = await AXIOS.post("/produtos", dados);
+            const request = await AXIOS.post("/usuarios", dados);
             return request.data;
         },
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ["produtos"]
+                queryKey: ["usuarios"]
             })
         }
     });
@@ -28,12 +28,12 @@ export const useCriar = () => {
 export const useEditar = () => {
     return useMutation({
         mutationFn: async (dados) => {
-            const request = await AXIOS.put(`/produtos/${dados.produto_id}`, dados);
+            const request = await AXIOS.put(`/usuarios/${dados.usuario_id}`, dados);
             return request.data;
         },
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ["produtos"]
+                queryKey: ["usuarios"]
             })
         }
     });
@@ -42,12 +42,12 @@ export const useEditar = () => {
 export const useDeletar = () => {
     return useMutation({
         mutationFn: async (id) => {
-            const request = await AXIOS.delete(`/produtos/${id}`);
+            const request = await AXIOS.delete(`/usuarios/${id}`);
             return request.data;
         },
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ["produtos"]
+                queryKey: ["usuarios"]
             })
         }
     });
