@@ -2,14 +2,22 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useContext } from "react";
 import { AntContext } from "../contexts/AntContext";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
 
   const { collapsed, setCollapsed } = useContext(AntContext);
+  const usuario = JSON.parse(sessionStorage.getItem("usuario"));
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setCollapsed(!collapsed);
   };
+
+  const logout = () => {
+    sessionStorage.clear();
+    navigate("/");
+  }
 
   return (
     <>
@@ -28,13 +36,16 @@ const Navbar = () => {
             </div>
             <div className="flex gap-5 items-center text-right">
               <div>
-                <h5>Usuário da Silva</h5>
-                <a href="#logout" className="font-bold ">
+                <h5>{usuario.usuario_nome}</h5>
+                <div
+                  className="font-bold cursor-pointer"
+                  onClick={logout}
+                >
                   Sair
-                </a>
+                </div>
               </div>
               <Button type="primary" className="w-[30px]" shape="circle">
-                U
+                {usuario.usuario_nome[0]}
               </Button>
             </div>
           </div>

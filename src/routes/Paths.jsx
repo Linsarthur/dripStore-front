@@ -5,6 +5,7 @@ import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home";
 import Marcas from "../pages/Marcas";
 import Produtos from "../pages/Produtos";
+import SafePath from "./SafePath";
 
 const Paths = () => {
   return (
@@ -12,7 +13,7 @@ const Paths = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<PageLayout />}>
+          <Route path="/dashboard" element={<SafePath><PageLayout /></SafePath>}>
             <Route index element={<Dashboard />} />
             <Route path="produtos" element={<Produtos />} />
             <Route path="categorias" element={<Categorias />} />

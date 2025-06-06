@@ -4,25 +4,31 @@ import logo from "../assets/Group.png";
 import tenisCosta from "../assets/tenis-costa.png";
 import tenisFrente from "../assets/tenis-frente.png";
 import { AXIOS } from "../services";
+import { useContext } from "react";
+import { AntContext } from "../contexts/AntContext";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { api } = useContext(AntContext);
 
-  async function onLogin(values) {
-    const dados = {
-      usuario_email: values.usuario_email,
-      usuario_senha: values.usuario_senha,
-    };
-
+  async function onLogin(dados) {
     try {
-      const response = await AXIOS.post("/usuarios", dados);
-      if (response.data) {
-        localStorage.setItem("token", response.data.token);
+      const response = await AXIOS.post("/login", dados);
+      if (response.data.token) {
+        sessionStorage.setItem("token", response.data.token);
+        sessionStorage.setItem("usuario", JSON.stringify(response.data.usuario));
         navigate("/dashboard");
+        return;
       }
+      api[response.data.tipo]({
+        message: "Aviso",
+        description: response.data.mensagem
+      })
     } catch (error) {
-      console.log(error);
-      alert("Login falhou! Verifique suas credenciais.");
+      api[error.tipo]({
+        message: "Aviso",
+        description: error.mensagem
+      })
     }
   }
   return (

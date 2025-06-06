@@ -14,7 +14,11 @@ export const useBuscar = () => {
 export const useCriar = () => {
     return useMutation({
         mutationFn: async (dados) => {
-            const request = await AXIOS.post("/produtos", dados);
+            const request = await AXIOS.post("/produtos", dados, {
+                headers: {
+                    "Content-type": "multipart/form-data"
+                }
+            });
             return request.data;
         },
         onSuccess: () => {
