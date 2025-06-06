@@ -3,14 +3,28 @@ import { useNavigate } from "react-router";
 import logo from "../assets/Group.png";
 import tenisCosta from "../assets/tenis-costa.png";
 import tenisFrente from "../assets/tenis-frente.png";
+import { AXIOS } from "../services";
 
 const Home = () => {
-  function onLogin(data) {
-    console.log(data);
-  }
-
   const navigate = useNavigate();
 
+  async function onLogin(values) {
+    const dados = {
+      usuario_email: values.usuario_email,
+      usuario_senha: values.usuario_senha,
+    };
+
+    try {
+      const response = await AXIOS.post("/usuarios", dados);
+      if (response.data) {
+        localStorage.setItem("token", response.data.token);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Login falhou! Verifique suas credenciais.");
+    }
+  }
   return (
     <>
       <div className="flex items-center justify-around h-screen w-screen bg-gradient-to-b from-[#B5B6F2] to-[#EFEFFF]">
@@ -34,12 +48,7 @@ const Home = () => {
             >
               <Input.Password placeholder="********" />
             </Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="w-full my-6"
-              onSubmit={navigate("/dashboard")}
-            >
+            <Button type="primary" htmlType="submit" className="w-full my-6">
               Entrar
             </Button>
           </Form>
