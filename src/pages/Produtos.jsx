@@ -1,25 +1,26 @@
 import {
-    DeleteOutlined,
-    EditOutlined,
-    PlusOutlined,
-    SearchOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  PlusOutlined,
+  SearchOutlined,
 } from "@ant-design/icons";
 import {
-    Button,
-    Drawer,
-    Form,
-    Input,
-    Popconfirm,
-    Select,
-    Space,
-    Table,
+  Button,
+  Drawer,
+  Form,
+  Input,
+  InputNumber,
+  Popconfirm,
+  Select,
+  Space,
+  Table,
 } from "antd";
 import { useState } from "react";
 import {
-    useBuscar,
-    useCriar,
-    useDeletar,
-    useEditar,
+  useBuscar,
+  useCriar,
+  useDeletar,
+  useEditar,
 } from "../hooks/produtoHooks";
 import { useBuscar as useBuscarCategorias } from "./../hooks/categoriaHooks";
 import { useBuscar as useBuscarMarcas } from "./../hooks/marcaHooks";
@@ -147,10 +148,18 @@ const Produtos = () => {
                 className="text-[18px]"
                 onClick={() => {
                   editForm.setFieldsValue({
+                    produto_id: linha.produto_id,
+                    produto_nome: linha.produto_nome,
+                    produto_preco: linha.produto_preco,
+                    produto_desconto: linha.produto_desconto,
+                    produto_imagem: linha.produto_imagem,
                     marca_id: linha.marca_id,
-                    marca_nome: linha.marca_nome,
+                    categoria_id: linha.categoria_id,
                   });
                   setVisibleUpdate(true);
+                  
+                    
+                  
                 }}
               />
               <Popconfirm
@@ -185,14 +194,14 @@ const Produtos = () => {
             name={"produto_preco"}
             rules={[{ required: true, message: "Campo obrigatório" }]}
           >
-            <Input placeholder="Preço do produto" type="number" />
+            <InputNumber stringMode={false} placeholder="Digite o preço" />
           </Form.Item>
           <Form.Item
             label="Desconto"
             name={"produto_desconto"}
             rules={[{ required: true, message: "Campo obrigatório" }]}
           >
-            <Input placeholder="Desconto do produto" />
+            <InputNumber stringMode={false} placeholder="Digite o desconto" />
           </Form.Item>
           <Form.Item
             label="Imagem"
@@ -238,49 +247,35 @@ const Produtos = () => {
               }
             />
           </Form.Item>
-          <Button type="primary" htmlType="submit">Criar</Button>
+          <Button type="primary" htmlType="submit">
+            Criar
+          </Button>
         </Form>
       </Drawer>
+
       <Drawer
         open={visibleUpdate}
         onClose={() => setVisibleUpdate(false)}
         title={"Editar"}
       >
-        <Form layout="vertical" onFinish={onEditar} form={createForm}>
-          <Form.Item
-            label="Nome"
-            name={"produto_nome"}
-            rules={[{ required: true, message: "Campo obrigatório" }]}
-          >
+        <Form layout="vertical" onFinish={onEditar} form={editForm}>
+          <Form.Item name={"produto_id"} hidden>
+            <Input />
+          </Form.Item>
+          <Form.Item label="Nome" name={"produto_nome"}>
             <Input placeholder="Nome do produto" />
           </Form.Item>
-          <Form.Item
-            label="Preço"
-            name={"produto_preco"}
-            rules={[{ required: true, message: "Campo obrigatório" }]}
-          >
-            <Input placeholder="Preço do produto" />
+          <Form.Item label="Preço" name={"produto_preco"}>
+            <InputNumber stringMode={false} placeholder="Digite o preço" />
           </Form.Item>
-          <Form.Item
-            label="Desconto"
-            name={"produto_desconto"}
-            rules={[{ required: true, message: "Campo obrigatório" }]}
-          >
-            <Input placeholder="Desconto do produto" />
+          <Form.Item label="Desconto" name={"produto_desconto"}>
+            <InputNumber stringMode={false} placeholder="Digite o desconto" />
           </Form.Item>
-          <Form.Item
-            label="Imagem"
-            name={"produto_imagem"}
-            rules={[{ required: true, message: "Campo obrigatório" }]}
-          >
+          <Form.Item label="Imagem" name={"produto_imagem"}>
             <Input placeholder="Imagem do produto" />
           </Form.Item>
 
-          <Form.Item
-            label="Marca"
-            name={"marca_id"}
-            rules={[{ required: true, message: "Campo obrigatório" }]}
-          >
+          <Form.Item label="Marca" name={"marca_id"}>
             <Select
               options={
                 carregouMarcas
@@ -294,11 +289,7 @@ const Produtos = () => {
               }
             />
           </Form.Item>
-          <Form.Item
-            label="Categoria"
-            name={"categoria_id"}
-            rules={[{ required: true, message: "Campo obrigatório" }]}
-          >
+          <Form.Item label="Categoria" name={"categoria_id"}>
             <Select
               options={
                 carregouCategorias
@@ -312,7 +303,9 @@ const Produtos = () => {
               }
             />
           </Form.Item>
-          <Button type="primary" htmlType="submit">Editar</Button>
+          <Button type="primary" htmlType="submit">
+            Editar
+          </Button>
         </Form>
       </Drawer>
     </div>

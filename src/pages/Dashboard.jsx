@@ -12,8 +12,6 @@ import {
   useDeletar,
   useEditar,
 } from "../hooks/usuarioHooks";
-import { useBuscar as useBuscarCategorias } from "./../hooks/categoriaHooks";
-import { useBuscar as useBuscarMarcas } from "./../hooks/marcaHooks";
 
 const Dashboard = () => {
   const [visibleCreate, setVisibleCreate] = useState(false);
@@ -24,9 +22,6 @@ const Dashboard = () => {
   const { mutateAsync: deletar } = useDeletar();
   const [createForm] = Form.useForm();
   const [editForm] = Form.useForm();
-  const { data: marcas, isFetched: carregouMarcas } = useBuscarMarcas();
-  const { data: categorias, isFetched: carregouCategorias } =
-    useBuscarCategorias();
 
   function onCriar(dados) {
     criar(dados, {
@@ -205,13 +200,14 @@ const Dashboard = () => {
           </Button>
         </Form>
       </Drawer>
+
       <Drawer
         open={visibleUpdate}
         onClose={() => setVisibleUpdate(false)}
         title={"Editar"}
       >
         <Form layout="vertical" onFinish={onEditar} form={editForm}>
-          <Form.Item name={"marca_id"} hidden>
+          <Form.Item name={"usuario_id"} hidden>
             <Input />
           </Form.Item>
           <Form.Item
